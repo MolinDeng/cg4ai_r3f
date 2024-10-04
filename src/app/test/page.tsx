@@ -1,13 +1,13 @@
 'use client';
 
-import { Suspense, useMemo, useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
-import { MathUtils, Mesh, ShaderMaterial, Vector2 } from 'three';
-import { OrbitControls, shaderMaterial } from '@react-three/drei';
+import { ShaderMaterial, Vector2 } from 'three';
+import { shaderMaterial } from '@react-three/drei';
 
 import vertexShader from '@/shaders/vertexShader.glsl';
 import fragmentShader from '@/shaders/fragmentShader.glsl';
-import { useWindowSize } from '@/hooks/UseWindowSize';
+// import { useWindowSize } from '@/hooks/UseWindowSize';
 
 const TestMat = shaderMaterial(
   {
@@ -38,7 +38,7 @@ const Test = () => {
   return (
     <mesh scale={[viewport.width, viewport.height, 1]}>
       <planeGeometry args={[1, 1]} />
-      {/* @ts-ignore */}
+      {/* @ts-expect-error Property 'testMat' does not exist on type 'JSX.IntrinsicElements'. */}
       <testMat ref={mat} />
     </mesh>
   );
