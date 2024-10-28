@@ -68,6 +68,7 @@ export default function Home() {
         <a href="/test1">SDF</a>
         <a href="/test2">CT</a>
         <a href="/test3">Volumetric Cloud</a>
+        <a href="/test4">Volumetric Cloud2</a>
         </footer>
     </div>
   );
