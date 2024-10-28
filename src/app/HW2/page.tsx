@@ -1,9 +1,8 @@
 'use client';
 
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
-import { ShaderMaterial, Vector2 } from 'three';
-import { OrbitControls, shaderMaterial, Stats } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls, Stats } from '@react-three/drei';
 import * as Three from 'three';
 import { Leva, useControls } from 'leva'
 
