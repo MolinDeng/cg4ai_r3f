@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import vertexShader from '@/shaders/test3/vertexShader.glsl';
 import fragmentShader from '@/shaders/test3/fragmentShader.glsl';
