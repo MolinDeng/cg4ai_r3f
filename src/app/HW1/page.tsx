@@ -5,8 +5,8 @@ import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Vector2 } from 'three';
 import { shaderMaterial } from '@react-three/drei';
 
-import vertexShader from '@/shaders/vertexShader.glsl';
-import fragmentShader from '@/shaders/fragmentShader.glsl';
+import vertexShader from '@/shaders/hw1/vertexShader.glsl';
+import fragmentShader from '@/shaders/hw1/fragmentShader.glsl';
 // import { useWindowSize } from '@/hooks/UseWindowSize';
 
 const TestMat = shaderMaterial(
