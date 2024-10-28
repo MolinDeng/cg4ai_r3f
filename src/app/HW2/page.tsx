@@ -99,8 +99,12 @@ const TestPage = () => {
         setFileKey((prevKey) => prevKey + 1);
       };
       reader.readAsArrayBuffer(file);
-    } catch (error: any) {
-      console.error(error.message);
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error(err.message);
+      } else {
+        console.error('An unexpected error occurred', err);
+      }
     }
   };
 
