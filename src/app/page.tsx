@@ -65,8 +65,9 @@ export default function Home() {
           />
           Learn
         </a>
-        <a href="/HW1">SDF</a>
-        <a href="/HW2">Volume</a>
+        <a href="/test1">SDF</a>
+        <a href="/test2">CT</a>
+        <a href="/test3">Volumetric Cloud</a>
         </footer>
     </div>
   );

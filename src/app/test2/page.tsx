@@ -6,8 +6,8 @@ import { OrbitControls, Stats } from '@react-three/drei';
 import * as Three from 'three';
 import { Leva, useControls } from 'leva'
 
-import vertexShader from '@/shaders/hw2/vertexShader.glsl';
-import fragmentShader from '@/shaders/hw2/fragmentShader.glsl';
+import vertexShader from '@/shaders/test2/vertexShader.glsl';
+import fragmentShader from '@/shaders/test2/fragmentShader.glsl';
 // import { useWindowSize } from '@/hooks/UseWindowSize';
 
 const extractDimensionsFromFilename = (filename: string): [number, number, number] => {
