@@ -7,8 +7,8 @@ import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { Leva, useControls } from 'leva';
 
-import vertexShader from '@/shaders/test3/vertexShader.glsl';
-import fragmentShader from '@/shaders/test3/fragmentShader.glsl';
+import vertexShader from '@/shaders/test4/vertexShader.glsl';
+import fragmentShader from '@/shaders/test4/fragmentShader.glsl';
 
 // Noise Texture
 const NOISE_TEXTURE_URL = 'https://cdn.maximeheckel.com/noises/noise2.png';
@@ -19,10 +19,12 @@ const Raymarching = ({
   dpr,
   maxSteps,
   marchSize,
+  lowQuality,
 }: {
   dpr: number;
   maxSteps: number;
   marchSize: number;
+  lowQuality: boolean;
 }) => {
   const { viewport } = useThree();
   const [noisetexture, blueNoiseTexture] = useTexture(
@@ -45,6 +47,7 @@ const Raymarching = ({
     uFrame: { value: 0 },
     uMaxSteps: { value: maxSteps },
     uMarchSize: { value: marchSize },
+    uLowQuality: { value: lowQuality },
   }).current;
 
   useFrame((state, delta) => {
@@ -53,6 +56,7 @@ const Raymarching = ({
     uniforms.uFrame.value += 1;
     uniforms.uMaxSteps.value = maxSteps;
     uniforms.uMarchSize.value = marchSize;
+    uniforms.uLowQuality.value = lowQuality;
   });
 
   return (
@@ -68,13 +72,14 @@ const Raymarching = ({
 };
 
 const Scene = () => {
-  const { dpr, maxSteps, marchSize } = useControls({
+  const { dpr, maxSteps, marchSize, lowQuality } = useControls({
     dpr: {
-      value: 1,
+      value: 0.5,
       options: { '1x': 1, '0.5x': 0.5, '0.25x': 0.25, '0.125x': 0.125 },
     },
-    maxSteps: { value: 40, min: 10, max: 200, step: 10 },
+    maxSteps: { value: 60, min: 10, max: 200, step: 10 },
     marchSize: { value: 0.16, min: 0.1, max: 0.3, step: 0.01 },
+    lowQuality: { value: false },
   });
   return (
     <>
@@ -90,7 +95,12 @@ const Scene = () => {
         }}
       >
         <Suspense fallback={null}>
-          <Raymarching dpr={dpr} maxSteps={maxSteps} marchSize={marchSize} />
+          <Raymarching
+            dpr={dpr}
+            maxSteps={maxSteps}
+            marchSize={marchSize}
+            lowQuality={lowQuality}
+          />
         </Suspense>
       </Canvas>
       <Leva />

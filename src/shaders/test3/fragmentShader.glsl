@@ -109,9 +109,7 @@ vec4 raymarch(vec3 rayOrigin, vec3 rayDirection, float offset) {
 }
 
 void main() {
-  vec2 uv = gl_FragCoord.xy/uResolution.xy;
-  uv -= 0.5;
-  uv.x *= uResolution.x / uResolution.y;
+  vec2 uv = (gl_FragCoord.xy - .5 * uResolution.xy) / uResolution.y;
 
   // Ray Origin - camera
   vec3 ro = vec3(0.0, 0.0, 5.0);
