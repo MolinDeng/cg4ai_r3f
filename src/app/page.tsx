@@ -65,6 +65,7 @@ export default function Home() {
           />
           Learn
         </a>
+        <a href="/test0">2D SDF</a>
         <a href="/test1">SDF</a>
         <a href="/test2">CT</a>
         <a href="/test3">Volumetric Cloud</a>
