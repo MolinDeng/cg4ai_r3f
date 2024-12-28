@@ -48,6 +48,7 @@ export default function TestPage() {
   return (
     <Canvas
       orthographic
+      dpr={1}
       camera={{ position: [0.0, 0.0, 1000.0] }}
       style={{
         position: 'fixed',

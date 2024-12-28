@@ -14,10 +14,9 @@ float sdHexagon(vec2 p, float s, float r) {
     return length(p) * sign(p.y) - r; // Distance with corner radius
 }
 
-void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+void main() {
     // Normalized pixel coordinates
-    vec2 p = (2.0 * fragCoord - u_resolution) / u_resolution.y;
-
+    vec2 p = (2.0 * gl_FragCoord.xy - u_resolution) / u_resolution.y;
     // Size
     float si = 0.3 + 0.2 * cos(u_time);
     // Corner radius
@@ -33,11 +32,5 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     col = mix(col, vec3(1.0), 1.0 - smoothstep(0.0, 0.01, abs(d)));
 
     // Output color
-    fragColor = vec4(col, 1.0);
-}
-
-void main() {
-    vec4 color;
-    mainImage(color, gl_FragCoord.xy);
-    gl_FragColor = color;
+    gl_FragColor = vec4(col, 1.0);
 }
