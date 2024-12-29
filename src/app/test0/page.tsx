@@ -7,20 +7,21 @@ import * as THREE from 'three';
 
 import vertexShader from '@/shaders/test0/vertexShader.glsl';
 import fragmentShader from '@/shaders/test0/fragmentShader.glsl';
+import useDevicePixelRatio from '@/hooks/useDevicePixelRatio';
 
 const Test = () => {
   const { viewport } = useThree();
-
+  const dpr = useDevicePixelRatio();
   const uniforms = useRef({
     u_time: { value: 0 },
     u_resolution: {
-      value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+      value: new THREE.Vector2(window.innerWidth * dpr, window.innerHeight * dpr),
     },
   }).current;
 
   useFrame((_, delta) => {
     uniforms.u_time.value += delta;
-    uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+    uniforms.u_resolution.value.set(window.innerWidth * dpr, window.innerHeight * dpr);
   });
 
   return (
@@ -39,7 +40,7 @@ export default function TestPage() {
   return (
     <Canvas
       orthographic
-      dpr={1}
+      // dpr={1}
       camera={{ position: [0, 0, 6] }}
       style={{
         position: 'fixed',

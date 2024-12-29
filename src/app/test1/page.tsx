@@ -7,6 +7,7 @@ import { shaderMaterial } from '@react-three/drei';
 
 import vertexShader from '@/shaders/test1/vertexShader.glsl';
 import fragmentShader from '@/shaders/test1/fragmentShader.glsl';
+// import useDevicePixelRatio from '@/hooks/useDevicePixelRatio';
 // import { useWindowSize } from '@/hooks/UseWindowSize';
 
 const TestMat = shaderMaterial(
@@ -24,6 +25,7 @@ const Test = () => {
   const mat = useRef<ShaderMaterial>();
   // const { width, height } = useWindowSize();
   const { viewport } = useThree();
+  // const dpr = useDevicePixelRatio();
 
   useFrame((_, delta) => {
     if (mat.current) {
